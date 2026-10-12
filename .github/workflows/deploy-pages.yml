@@ -29,6 +29,8 @@ jobs:
           mkdir _site
           cp mi_vida_mi_feed.html _site/index.html
           cp School.jpg _site/School.jpg
+          cp app.js _site/app.js
+          cp styles.css _site/styles.css
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
