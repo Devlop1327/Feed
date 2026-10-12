@@ -85,6 +85,8 @@ const appState = {
             6: { x: 88, y: 48 }
         };
 
+        let avatarRenderSequence = 0;
+
         const avatarHairStyles = {
             male: ['fade', 'afro', 'dreads'],
             female: ['braids', 'afro', 'curls', 'bun']
@@ -482,6 +484,7 @@ const appState = {
 
         // Renders realistic solid SVG Avatars
         function renderAvatarSVG(isMap = false) {
+            const emblemClipId = `avatar-shield-clip-${++avatarRenderSequence}`;
             const skinMap = {
                 ebony: "#3b200b",
                 bronze: "#8d5524",
@@ -626,17 +629,14 @@ const appState = {
                     ${uniformBodySVG}
 
                     <!-- School shield emblem - right side of shirt -->
-                    <g transform="translate(66 101) scale(0.78)">
-                        <path d="M -18 18 C -18 -8, -10 -18, 0 -26 C 10 -18, 18 -8, 18 18 L 12 22 C 8 28, 4 31, 0 35 C -4 31, -8 28, -12 22 Z" fill="#d4a72c" stroke="#f1d77c" stroke-width="1.2"/>
-                        <path d="M -16 16 C -13 -7, -7 -15, 0 -20 C 7 -15, 13 -7, 16 16 L 11 20 C 9 27, 5 31, 0 34 C -5 31, -9 27, -11 20 Z" fill="#0d4f8f"/>
-                        <path d="M -11 6 L 0 15 L 11 6 L 11 16 L 0 24 L -11 16 Z" fill="#d4a72c" opacity="0.7"/>
-                        <path d="M -15 2 L 15 2 L 15 6 L 10 6 L 10 11 L 15 11 L 15 16 L -15 16 L -15 11 L -10 11 L -10 6 L -15 6 Z" fill="#f8fafc" opacity="0.9"/>
-                        <path d="M -15 -5 L -5 -10 L -5 9 L 0 14 L 5 9 L 5 -10 L 15 -5 L 0 -15 Z" fill="#d4a72c" opacity="0.9"/>
-                        <path d="M -10 -6 L -2 -12 L 0 -14 L 2 -12 L 10 -6" stroke="#f9e7a5" stroke-width="1" fill="none" stroke-linecap="round"/>
-                        <path d="M -8 2 L 8 2" stroke="#f9e7a5" stroke-width="1.25" stroke-linecap="round"/>
-                        <circle cx="10" cy="-8" r="3.2" fill="#f6d86a"/>
-                        <path d="M -18 18 C -18 26, -6 31, 0 35 C 6 31, 18 26, 18 18" fill="none" stroke="#f1d77c" stroke-width="1.4"/>
-                    </g>
+                    <svg x="61" y="94" width="14" height="17" viewBox="100 220 696 845" preserveAspectRatio="none" overflow="hidden">
+                        <defs>
+                            <clipPath id="${emblemClipId}" clipPathUnits="userSpaceOnUse">
+                                <path d="M 128 240 H 768 L 758 876 C 754 955 669 1008 448 1032 C 227 1008 142 955 138 876 Z"/>
+                            </clipPath>
+                        </defs>
+                        <image href="escudo.jpg" x="0" y="0" width="896" height="1195" preserveAspectRatio="none" clip-path="url(#${emblemClipId})"/>
+                    </svg>
 
                     <!-- Head Base -->
                     <rect x="28" y="28" width="44" height="44" rx="20" fill="${skinCol}"/>
