@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir _site
           cp mi_vida_mi_feed.html _site/index.html
+          cp School.jpg _site/School.jpg
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
