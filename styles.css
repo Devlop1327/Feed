@@ -151,6 +151,26 @@ body {
             display: none;
         }
 
+        .map-route-desktop,
+        .map-route-mobile {
+            stroke-dasharray: 3 2.5;
+            animation: routeMove 2.2s linear infinite;
+        }
+
+        @keyframes routeMove {
+            from {
+                stroke-dashoffset: 0;
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            to {
+                stroke-dashoffset: -24;
+                opacity: 0.8;
+            }
+        }
+
         @media (max-width: 640px) {
             body > header > div {
                 padding: 0.45rem 0.65rem;
@@ -344,4 +364,13 @@ body {
         ::-webkit-scrollbar-thumb {
             background: rgba(245, 158, 11, 0.85);
             border-radius: 10px;
+        }
+
+        .no-visible-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .no-visible-scrollbar::-webkit-scrollbar {
+            display: none;
         }

@@ -48,7 +48,8 @@ if (typeof tailwind !== 'undefined') {
 const appState = {
             studentName: "Alex",
             studentGrade: "10.º Grado",
-            hairStyle: "braids",
+            avatarGender: "male",
+            hairStyle: "fade",
             hairColor: "#1c1917",
             skinTone: "bronze",
             expression: "happy",
@@ -82,6 +83,11 @@ const appState = {
             4: { x: 64, y: 35 },
             5: { x: 76, y: 18 },
             6: { x: 88, y: 48 }
+        };
+
+        const avatarHairStyles = {
+            male: ['fade', 'afro', 'dreads'],
+            female: ['braids', 'afro', 'curls', 'bun']
         };
 
         const stationEvidencePrompts = {
@@ -222,7 +228,7 @@ const appState = {
                 {
                     type: "2. Trivia Algoritmo",
                     icon: "fa-brain",
-                    question: "¿Qué es una 'cámara de eco' en las plataformas digitales?",
+                    question: "¿Qué significa que una red te muestra 'solo lo que ya crees'?",
                     options: [
                         { text: "Un fenómeno donde el algoritmo solo te muestra publicaciones que reafirman lo que ya crees, aislándote de otras realidades.", correct: true },
                         { text: "Un filtro de audio utilizado para grabar videos en TikTok.", correct: false }
@@ -275,7 +281,7 @@ const appState = {
                 {
                     type: "2. Trivia Algoritmo",
                     icon: "fa-brain",
-                    question: "¿Qué es la falacia 'Ad Hominem' en un debate sobre educación y futuro?",
+                    question: "¿Qué pasa cuando alguien ataca a la persona en vez de responder la idea?",
                     options: [
                         { text: "Defender una idea utilizando gráficos y estadísticas reales.", correct: false },
                         { text: "Atacar o descalificar a la persona que opina en lugar de refutar sus argumentos con razones.", correct: true }
@@ -328,7 +334,7 @@ const appState = {
                 {
                     type: "2. Trivia Algoritmo",
                     icon: "fa-brain",
-                    question: "¿Qué oportunidades de formación superior y técnica existen en el Distrito de Buenaventura?",
+                    question: "¿Qué opciones de formación superior y técnica existen en el Distrito de Buenaventura?",
                     options: [
                         { text: "El SENA, la Universidad del Pacífico, la Universidad del Valle y centros etnoeducativos.", correct: true },
                         { text: "Únicamente cursos virtuales fuera del país.", correct: false }
@@ -338,7 +344,7 @@ const appState = {
                 {
                     type: "3. Quiz Evidencia",
                     icon: "fa-circle-question",
-                    question: "¿Qué son las 'competencias transversales' para el mundo laboral y comunitario?",
+                    question: "¿Qué habilidades, como resolver problemas y comunicarse, sirven en muchos trabajos y situaciones?",
                     options: [
                         { text: "Saber manejar únicamente una aplicación de redes sociales.", correct: false },
                         { text: "Capacidades como la resolución de problemas, la empatía, el trabajo en equipo y la comunicación.", correct: true }
@@ -381,7 +387,7 @@ const appState = {
                 {
                     type: "2. Trivia Algoritmo",
                     icon: "fa-brain",
-                    question: "¿Qué elementos integran la Matriz de Autoconocimiento?",
+                    question: "¿Qué elementos te ayudan a conocerte mejor y tomar decisiones?",
                     options: [
                         { text: "Intereses personales, habilidades por desarrollar, valores, red de apoyo y oportunidades del entorno.", correct: true },
                         { text: "El número de seguidores y los me gusta recibidos.", correct: false }
@@ -391,7 +397,7 @@ const appState = {
                 {
                     type: "3. Quiz Evidencia",
                     icon: "fa-circle-question",
-                    question: "¿Quiénes forman parte de tu red de apoyo institucional en la I.E. Francisco José de Caldas?",
+                    question: "¿Con quiénes puedes contar en la I.E. Francisco José de Caldas para pensar en tu futuro?",
                     options: [
                         { text: "Exclusivamente cuentas anónimas de redes sociales.", correct: false },
                         { text: "Orientación Escolar, docentes, directivos, familia y pares colaboradores.", correct: true }
@@ -401,7 +407,7 @@ const appState = {
                 {
                     type: "4. Escenario Decisión",
                     icon: "fa-tree-city",
-                    question: "Sientes dudas sobre tus verdaderos gustos frente a las expectativas de la red. ¿Qué estrategia aplicas?",
+                    question: "¿Qué puedes hacer si dudas de tus gustos por las expectativas de las redes?",
                     options: [
                         { text: "Escribir en la bitácora personal, probar distintas actividades y consultar a Orientación.", correct: true },
                         { text: "Copiar la profesión del influencer con más vistas del día.", correct: false }
@@ -434,7 +440,7 @@ const appState = {
                 {
                     type: "2. Trivia Algoritmo",
                     icon: "fa-brain",
-                    question: "¿Qué es la 'Huella Digital' y por qué es relevante para tu futuro?",
+                    question: "¿Qué rastro dejan en internet tus publicaciones y comentarios, y cómo puede afectar tu reputación?",
                     options: [
                         { text: "El rastro permanente de comentarios, fotos y datos que dejas en internet y que influye en tu reputación.", correct: true },
                         { text: "La marca que dejas en la pantalla del celular cuando lo usas.", correct: false }
@@ -444,7 +450,7 @@ const appState = {
                 {
                     type: "3. Quiz Evidencia",
                     icon: "fa-circle-question",
-                    question: "¿Qué elementos caracterizan a una publicación digital responsable y argumentada?",
+                    question: "¿Qué hace que una publicación digital sea responsable y esté bien sustentada?",
                     options: [
                         { text: "Lenguaje agresivo, títulos engañosos y provocación desinformada.", correct: false },
                         { text: "Lenguaje respetuoso, datos verificados, reconocimiento de fuentes y propósito constructivo.", correct: true }
@@ -464,7 +470,7 @@ const appState = {
                 {
                     type: "5. Debate Grupal",
                     icon: "fa-comments",
-                    question: "Compromiso de Aula: ¿Cómo será nuestro feed colectivo de la I.E. Francisco José de Caldas?",
+                    question: "¿Cómo será nuestro feed colectivo de la I.E. Francisco José de Caldas?",
                     options: [
                         { text: "Un espacio para consumir contenido sin criterio.", correct: false },
                         { text: "Un espacio para cuestionar mitos, inspirar a otros jóvenes y construir el futuro más allá de la pantalla.", correct: true }
@@ -492,27 +498,48 @@ const appState = {
             let hairSVG = "";
             if (appState.hairStyle === "braids") {
                 hairSVG = `
-                    <path d="M 25 32 C 25 10, 75 10, 75 32 C 75 22, 25 22, 25 32 Z" fill="${hairCol}"/>
-                    <rect x="22" y="30" width="8" height="42" rx="4" fill="${hairCol}"/>
-                    <rect x="33" y="28" width="8" height="48" rx="4" fill="${hairCol}"/>
-                    <rect x="59" y="28" width="8" height="48" rx="4" fill="${hairCol}"/>
-                    <rect x="70" y="30" width="8" height="42" rx="4" fill="${hairCol}"/>
+                    <path d="M 26 36 C 24 12, 76 12, 74 36 C 65 30, 35 30, 26 36 Z" fill="${hairCol}"/>
+                    <rect x="18" y="32" width="7" height="42" rx="3.5" fill="${hairCol}"/>
+                    <rect x="27" y="33" width="6" height="46" rx="3" fill="${hairCol}"/>
+                    <rect x="67" y="33" width="6" height="46" rx="3" fill="${hairCol}"/>
+                    <rect x="75" y="32" width="7" height="42" rx="3.5" fill="${hairCol}"/>
                 `;
             } else if (appState.hairStyle === "afro") {
                 hairSVG = `
-                    <circle cx="50" cy="30" r="34" fill="${hairCol}"/>
-                    <circle cx="30" cy="38" r="22" fill="${hairCol}"/>
-                    <circle cx="70" cy="38" r="22" fill="${hairCol}"/>
+                    <path d="M 24 38 C 20 18, 34 7, 47 12 C 57 4, 76 15, 76 32 L 72 38 C 62 31, 38 31, 28 38 Z" fill="${hairCol}"/>
+                    <circle cx="31" cy="24" r="8" fill="${hairCol}"/>
+                    <circle cx="42" cy="15" r="8" fill="${hairCol}"/>
+                    <circle cx="56" cy="14" r="9" fill="${hairCol}"/>
+                    <circle cx="69" cy="23" r="8" fill="${hairCol}"/>
+                    <circle cx="22" cy="32" r="7" fill="${hairCol}"/>
+                    <circle cx="78" cy="32" r="7" fill="${hairCol}"/>
                 `;
             } else if (appState.hairStyle === "dreads") {
                 hairSVG = `
-                    <path d="M 20 25 Q 50 12 80 25 L 82 55 Q 50 48 18 55 Z" fill="${hairCol}"/>
-                    <rect x="18" y="25" width="7" height="38" rx="3" fill="${hairCol}"/>
-                    <rect x="28" y="22" width="7" height="45" rx="3" fill="${hairCol}"/>
-                    <rect x="65" y="22" width="7" height="45" rx="3" fill="${hairCol}"/>
-                    <rect x="75" y="25" width="7" height="38" rx="3" fill="${hairCol}"/>
+                    <path d="M 21 36 Q 50 12 79 36 L 74 40 Q 50 27 26 40 Z" fill="${hairCol}"/>
+                    <rect x="17" y="31" width="7" height="42" rx="3.5" fill="${hairCol}"/>
+                    <rect x="26" y="32" width="6" height="46" rx="3" fill="${hairCol}"/>
+                    <rect x="68" y="32" width="6" height="46" rx="3" fill="${hairCol}"/>
+                    <rect x="76" y="31" width="7" height="42" rx="3.5" fill="${hairCol}"/>
                 `;
-            } else { // fade / default
+            } else if (appState.hairStyle === "curls") {
+                hairSVG = `
+                    <path d="M 27 37 C 25 18 37 10 50 14 C 62 8 76 19 73 37 C 63 31 37 31 27 37 Z" fill="${hairCol}"/>
+                    <circle cx="31" cy="23" r="8" fill="${hairCol}"/>
+                    <circle cx="43" cy="15" r="8" fill="${hairCol}"/>
+                    <circle cx="56" cy="15" r="8" fill="${hairCol}"/>
+                    <circle cx="69" cy="24" r="8" fill="${hairCol}"/>
+                    <circle cx="26" cy="39" r="6" fill="${hairCol}"/>
+                    <circle cx="74" cy="39" r="6" fill="${hairCol}"/>
+                `;
+            } else if (appState.hairStyle === "bun") {
+                hairSVG = `
+                    <circle cx="50" cy="13" r="13" fill="${hairCol}"/>
+                    <path d="M 28 37 C 27 18 39 12 50 19 C 62 12 74 19 72 37 C 62 31 38 31 28 37 Z" fill="${hairCol}"/>
+                    <circle cx="29" cy="29" r="7" fill="${hairCol}"/>
+                    <circle cx="71" cy="29" r="7" fill="${hairCol}"/>
+                `;
+            } else {
                 hairSVG = `
                     <path d="M 26 35 C 26 16, 74 16, 74 35 L 74 32 C 74 18, 26 18, 26 32 Z" fill="${hairCol}"/>
                     <path d="M 28 32 C 28 18, 72 18, 72 32 Z" fill="${hairCol}"/>
@@ -548,21 +575,55 @@ const appState = {
                 `;
             }
 
+            const uniformBodySVG = appState.avatarGender === "female" ? `
+                <path d="M 22 84 C 30 73, 70 73, 78 84 L 88 138 L 12 138 Z" fill="${clothCol}"/>
+                <path d="M 29 82 L 50 96 L 71 82 L 76 138 L 24 138 Z" fill="${clothCol}" opacity="0.9"/>
+                <path d="M 32 80 L 50 94 L 68 80 L 70 118 L 30 118 Z" fill="${shirtCol}"/>
+                <path d="M 36 79 L 50 90 L 64 79 Z" fill="#ffffff"/>
+                <path d="M 46 90 L 50 116 L 54 90 Z" fill="${shirtAccent}"/>
+                <path d="M 25 82 L 30 90 L 37 80 L 37 104 L 24 116 Z" fill="#0b5f4d" opacity="0.36"/>
+                <path d="M 75 82 L 70 90 L 63 80 L 63 104 L 76 116 Z" fill="#0b5f4d" opacity="0.36"/>
+                <path d="M 24 100 L 30 96 L 30 130 L 24 138 Z" fill="${clothCol}"/>
+                <path d="M 76 100 L 70 96 L 70 130 L 76 138 Z" fill="${clothCol}"/>
+            ` : `
+                <path d="M 18 84 C 25 72, 75 72, 82 84 L 92 138 L 8 138 Z" fill="${clothCol}"/>
+                <path d="M 26 82 L 50 96 L 74 82 L 78 138 L 22 138 Z" fill="${clothCol}" opacity="0.9"/>
+                <path d="M 28 80 L 50 94 L 72 80 L 74 118 L 26 118 Z" fill="${shirtCol}"/>
+                <path d="M 34 79 L 50 90 L 66 79 Z" fill="#ffffff"/>
+                <path d="M 46 90 L 50 116 L 54 90 Z" fill="${shirtAccent}"/>
+                <path d="M 22 82 L 28 90 L 36 80 L 36 104 L 22 116 Z" fill="#0b5f4d" opacity="0.36"/>
+                <path d="M 78 82 L 72 90 L 64 80 L 64 104 L 78 116 Z" fill="#0b5f4d" opacity="0.36"/>
+                <path d="M 22 100 L 28 96 L 28 130 L 22 138 Z" fill="${clothCol}"/>
+                <path d="M 78 100 L 72 96 L 72 130 L 78 138 Z" fill="${clothCol}"/>
+            `;
+
+
+            const expressionFeatures = {
+                happy: {
+                    eyebrows: '<path d="M 35 41 Q 40 39 45 41" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/><path d="M 55 41 Q 60 39 65 41" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>',
+                    mouth: '<path d="M 42 59 Q 50 66 58 59" stroke="#000000" stroke-width="2.5" stroke-linecap="round" fill="none"/>'
+                },
+                confident: {
+                    eyebrows: '<path d="M 35 41 L 45 40" stroke="#1c1917" stroke-width="2.5" stroke-linecap="round"/><path d="M 55 40 L 65 41" stroke="#1c1917" stroke-width="2.5" stroke-linecap="round"/>',
+                    mouth: '<path d="M 43 59 Q 50 64 57 59" stroke="#000000" stroke-width="2.5" stroke-linecap="round" fill="none"/>'
+                },
+                focused: {
+                    eyebrows: '<path d="M 35 42 L 45 39" stroke="#1c1917" stroke-width="2.5" stroke-linecap="round"/><path d="M 55 39 L 65 42" stroke="#1c1917" stroke-width="2.5" stroke-linecap="round"/>',
+                    mouth: '<path d="M 43 61 L 57 61" stroke="#000000" stroke-width="2.5" stroke-linecap="round" fill="none"/>'
+                },
+                cool: {
+                    eyebrows: '<path d="M 35 40 L 45 41" stroke="#1c1917" stroke-width="2.5" stroke-linecap="round"/><path d="M 55 41 L 65 40" stroke="#1c1917" stroke-width="2.5" stroke-linecap="round"/>',
+                    mouth: '<path d="M 42 59 Q 50 64 58 59" stroke="#000000" stroke-width="2.5" stroke-linecap="round" fill="none"/>'
+                }
+            };
+            const face = expressionFeatures[appState.expression] || expressionFeatures.happy;
             return `
                 <svg class="w-full h-full" viewBox="0 0 100 140" preserveAspectRatio="xMidYMid meet" fill="none">
                     <!-- Neck -->
                     <rect x="42" y="62" width="16" height="18" rx="4" fill="${skinCol}"/>
                     
                     <!-- Uniform body -->
-                    <path d="M 18 84 C 25 72, 75 72, 82 84 L 92 138 L 8 138 Z" fill="${clothCol}"/>
-                    <path d="M 26 82 L 50 96 L 74 82 L 78 138 L 22 138 Z" fill="${clothCol}" opacity="0.9"/>
-                    <path d="M 28 80 L 50 94 L 72 80 L 74 118 L 26 118 Z" fill="${shirtCol}"/>
-                    <path d="M 34 79 L 50 90 L 66 79 Z" fill="#ffffff"/>
-                    <path d="M 46 90 L 50 116 L 54 90 Z" fill="${shirtAccent}"/>
-                    <path d="M 22 82 L 28 90 L 36 80 L 36 104 L 22 116 Z" fill="#0b5f4d" opacity="0.36"/>
-                    <path d="M 78 82 L 72 90 L 64 80 L 64 104 L 78 116 Z" fill="#0b5f4d" opacity="0.36"/>
-                    <path d="M 22 100 L 28 96 L 28 130 L 22 138 Z" fill="${clothCol}"/>
-                    <path d="M 78 100 L 72 96 L 72 130 L 78 138 Z" fill="${clothCol}"/>
+                    ${uniformBodySVG}
 
                     <!-- School shield emblem - right side of shirt -->
                     <g transform="translate(66 101) scale(0.78)">
@@ -590,12 +651,11 @@ const appState = {
                     <circle cx="60" cy="47" r="2" fill="#1e293b"/>
                     
                     <!-- Eyebrows -->
-                    <path d="M 35 41 Q 40 39 45 41" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M 55 41 Q 60 39 65 41" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
+                    ${face.eyebrows}
 
                     <!-- Nose & Smile -->
                     <path d="M 50 49 L 48 54 L 52 54" stroke="#000000" stroke-width="1.2" opacity="0.3" fill="none"/>
-                    <path d="M 42 59 Q 50 66 58 59" stroke="#000000" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    ${face.mouth}
 
                     <!-- Hair Layer -->
                     ${hairSVG}
@@ -612,6 +672,7 @@ const appState = {
                 hairStyle: appState.hairStyle,
                 hairColor: appState.hairColor,
                 skinTone: appState.skinTone,
+                avatarGender: appState.avatarGender,
                 eyewear: appState.eyewear,
                 headwear: appState.headwear,
                 clothingColor: appState.clothingColor
@@ -624,6 +685,7 @@ const appState = {
         }
 
         function refreshAvatars() {
+            updateHairStyleChoices();
             const svgContent = renderAvatarSVG();
             
             const studioPrev = document.getElementById('studio-avatar-preview');
@@ -641,12 +703,12 @@ const appState = {
             const welcomeAvatars = document.getElementById('welcome-avatars-container');
             if (welcomeAvatars) {
                 const profileVariants = [
-                    { hairStyle: 'braids', hairColor: '#2f1d18', skinTone: 'bronze', clothingColor: '#0b7a57', eyewear: 'none', headwear: 'none' },
-                    { hairStyle: 'afro', hairColor: '#3b1f1f', skinTone: 'caramel', clothingColor: '#f8e6f1', eyewear: 'round', headwear: 'none' },
-                    { hairStyle: 'fade', hairColor: '#2b150e', skinTone: 'warm', clothingColor: '#0a5d8f', eyewear: 'none', headwear: 'none' },
-                    { hairStyle: 'braids', hairColor: '#4b2c1d', skinTone: 'ebony', clothingColor: '#fbe7ef', eyewear: 'shades', headwear: 'none' },
-                    { hairStyle: 'dreads', hairColor: '#301d12', skinTone: 'chestnut', clothingColor: '#0c6d53', eyewear: 'none', headwear: 'headphones' },
-                    { hairStyle: 'curls', hairColor: '#1f2937', skinTone: 'bronze', clothingColor: '#f8d7cb', eyewear: 'classic', headwear: 'none' }
+                    { avatarGender: 'male', hairStyle: 'braids', hairColor: '#2f1d18', skinTone: 'bronze', clothingColor: '#0b7a57', eyewear: 'none', headwear: 'none' },
+                    { avatarGender: 'female', hairStyle: 'afro', hairColor: '#3b1f1f', skinTone: 'caramel', clothingColor: '#f8e6f1', eyewear: 'round', headwear: 'none' },
+                    { avatarGender: 'male', hairStyle: 'fade', hairColor: '#2b150e', skinTone: 'warm', clothingColor: '#0a5d8f', eyewear: 'none', headwear: 'none' },
+                    { avatarGender: 'female', hairStyle: 'braids', hairColor: '#4b2c1d', skinTone: 'ebony', clothingColor: '#fbe7ef', eyewear: 'shades', headwear: 'none' },
+                    { avatarGender: 'male', hairStyle: 'dreads', hairColor: '#301d12', skinTone: 'chestnut', clothingColor: '#0c6d53', eyewear: 'none', headwear: 'headphones' },
+                    { avatarGender: 'female', hairStyle: 'curls', hairColor: '#1f2937', skinTone: 'bronze', clothingColor: '#f8d7cb', eyewear: 'classic', headwear: 'none' }
                 ];
 
                 welcomeAvatars.innerHTML = profileVariants.map((profile, index) => {
@@ -837,8 +899,37 @@ const appState = {
         }
 
         function selectHairStyle(style) {
+            if (!avatarHairStyles[appState.avatarGender].includes(style)) return;
             playSfx('click');
             appState.hairStyle = style;
+            refreshAvatars();
+        }
+
+        function updateHairStyleChoices() {
+            const allowedStyles = avatarHairStyles[appState.avatarGender] || avatarHairStyles.male;
+            document.querySelectorAll('.hair-tile').forEach(tile => {
+                const available = allowedStyles.includes(tile.dataset.hairStyle);
+                tile.classList.toggle('hidden', !available);
+                tile.classList.toggle('active', available && tile.dataset.hairStyle === appState.hairStyle);
+                tile.setAttribute('aria-pressed', String(available && tile.dataset.hairStyle === appState.hairStyle));
+            });
+        }
+
+        function selectAvatarGender(gender) {
+            if (gender !== 'male' && gender !== 'female') return;
+            playSfx('click');
+            appState.avatarGender = gender;
+            if (!avatarHairStyles[gender].includes(appState.hairStyle)) {
+                appState.hairStyle = gender === 'female' ? 'braids' : 'fade';
+            }
+            document.querySelectorAll('.avatar-gender-btn').forEach(button => {
+                const selected = button.dataset.avatarGender === gender;
+                button.setAttribute('aria-pressed', String(selected));
+                button.className = selected
+                    ? 'avatar-gender-btn flex-1 px-3 py-2 rounded-lg border border-amber-400 bg-amber-400 text-amber-950 font-black text-xs shadow-md transition-all'
+                    : 'avatar-gender-btn flex-1 px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white font-black text-xs transition-all';
+            });
+                    updateHairStyleChoices();
             refreshAvatars();
         }
 
@@ -897,7 +988,7 @@ const appState = {
 
         function randomizeAvatarVisual() {
             playSfx('click');
-            const hairs = ['braids', 'afro', 'dreads', 'fade', 'curls', 'bun'];
+            const hairs = avatarHairStyles[appState.avatarGender];
             const hairCols = ['#1c1917', '#451a03', '#b45309', '#7f1d1d'];
             const skins = ['bronze', 'ebony', 'warm', 'chestnut', 'caramel'];
             const exprs = ['happy', 'confident', 'focused', 'cool'];
@@ -1066,7 +1157,7 @@ const appState = {
                     <div class="flex items-start justify-between gap-4">
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 rounded-xl ${appState.badges[stationId].color} flex items-center justify-center shadow-sm"><i class="fa-solid ${appState.badges[stationId].icon} text-xl"></i></div>
-                            <div><p class="text-[9px] uppercase tracking-widest font-black text-teal-700 dark:text-teal-300">Bitácora · estación ${stationId} de 6</p><h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">${promptData.label}</h3></div>
+                            <div><p class="text-[9px] uppercase tracking-widest font-black text-teal-700 dark:text-teal-300">Diario · paso ${stationId} de 6</p><h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">${promptData.label}</h3></div>
                         </div>
                         <button onclick="openStationModal(${stationId})" class="shrink-0 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-black text-slate-700 dark:text-slate-200"><i class="fa-solid fa-arrow-left mr-1"></i><span class="hidden sm:inline">Retos</span></button>
                     </div>
@@ -1075,11 +1166,11 @@ const appState = {
 
                     <div class="grid grid-cols-1 sm:grid-cols-[1fr_1fr] gap-4">
                         <fieldset><legend class="text-[10px] uppercase tracking-wider font-black text-slate-500 dark:text-slate-400 mb-2">Modalidad de trabajo</legend><div class="grid grid-cols-2 gap-2">${modeOptions.map(([value, label]) => `<label class="evidence-level cursor-pointer"><input class="sr-only" type="radio" name="evidence-mode" value="${value}" onchange="updateEvidenceMode()" ${mode === value ? 'checked' : ''}><span class="block p-2.5 text-center text-[11px] font-black rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200">${label}</span></label>`).join('')}</div></fieldset>
-                        <fieldset><legend class="text-[10px] uppercase tracking-wider font-black text-slate-500 dark:text-slate-400 mb-2">Autoevaluación · ${promptData.criterion}</legend><div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5">${levelOptions.map(([value, label]) => `<label class="evidence-level cursor-pointer"><input class="sr-only" type="radio" name="evidence-level" value="${value}" ${level === value ? 'checked' : ''}><span class="flex h-full items-center justify-center p-2 text-center text-[9px] leading-tight font-black rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200">${label}</span></label>`).join('')}</div></fieldset>
+                        <fieldset><legend class="text-[10px] uppercase tracking-wider font-black text-slate-500 dark:text-slate-400 mb-2">¿Qué tan bien lo hice? · ${promptData.criterion}</legend><div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5">${levelOptions.map(([value, label]) => `<label class="evidence-level cursor-pointer"><input class="sr-only" type="radio" name="evidence-level" value="${value}" ${level === value ? 'checked' : ''}><span class="flex h-full items-center justify-center p-2 text-center text-[9px] leading-tight font-black rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200">${label}</span></label>`).join('')}</div></fieldset>
                     </div>
 
                     <div id="team-facilitation" class="hidden p-4 rounded-xl bg-slate-900 text-white border border-slate-700">
-                        <div class="flex items-center justify-between gap-3"><p class="text-[10px] uppercase tracking-widest font-black text-amber-300">Ronda de diálogo · 3 minutos</p><i class="fa-solid fa-people-group text-teal-300"></i></div>
+                        <div class="flex items-center justify-between gap-3"><p class="text-[10px] uppercase tracking-widest font-black text-amber-300">Charla en grupo · 3 minutos</p><i class="fa-solid fa-people-group text-teal-300"></i></div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3 text-[10px] leading-relaxed">
                             <p><strong class="text-teal-300">01 · Escuchar</strong><br>Una persona lee el caso sin juzgar las respuestas.</p>
                             <p><strong class="text-teal-300">02 · Contrastar</strong><br>Cada quien aporta una razón o una pregunta; busquen una diferencia útil.</p>
@@ -1088,7 +1179,7 @@ const appState = {
                     </div>
 
                     <div class="evidence-paper rounded-xl border border-slate-300 dark:border-slate-700 p-4 sm:p-5">
-                        <label for="station-evidence-text" class="block text-[10px] uppercase tracking-wider font-black text-slate-600 dark:text-slate-300 mb-2">Huella de aprendizaje <span class="normal-case tracking-normal font-bold text-slate-500">· máximo 600 caracteres</span></label>
+                        <label for="station-evidence-text" class="block text-[10px] uppercase tracking-wider font-black text-slate-600 dark:text-slate-300 mb-2">Mi respuesta <span class="normal-case tracking-normal font-bold text-slate-500">· máximo 600 caracteres</span></label>
                         <textarea id="station-evidence-text" maxlength="600" rows="4" oninput="updateEvidenceCounter()${stationId === 6 ? '; updateCreatorPreview()' : ''}" placeholder="${promptData.placeholder}" class="w-full resize-y min-h-28 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-950/80 p-3 text-sm leading-relaxed text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-teal-500">${escapeHTML(reflection)}</textarea>
                         <div class="mt-2 flex justify-between gap-3"><p class="text-[10px] text-slate-500 dark:text-slate-400">Usa un caso ficticio si prefieres no hablar de tu experiencia.</p><span id="evidence-character-count" class="shrink-0 text-[10px] font-bold text-slate-500">${reflection.length} / 600</span></div>
                     </div>
@@ -1099,7 +1190,7 @@ const appState = {
                         <button onclick="saveStationEvidence(${stationId})" class="flex-1 px-4 py-3.5 rounded-lg bg-teal-800 hover:bg-teal-900 text-white text-xs font-black flex items-center justify-center gap-2"><i class="fa-solid fa-floppy-disk"></i> Guardar evidencia y cerrar</button>
                         <button onclick="completeStation(${stationId})" class="px-4 py-3.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-black">Continuar sin guardar evidencia</button>
                     </div>
-                    <p class="text-[10px] text-center text-slate-500 dark:text-slate-400">${appState.localSaveEnabled ? 'El progreso está guardado en este dispositivo.' : 'Esta nota solo permanece abierta en esta pestaña. Activa el guardado local desde Bitácora para conservarla.'}</p>
+                    <p class="text-[10px] text-center text-slate-500 dark:text-slate-400">${appState.localSaveEnabled ? 'El progreso está guardado en este dispositivo.' : 'Esta nota solo permanece abierta en esta pestaña. Activa el guardado local desde tu diario para conservarla.'}</p>
                 </div>
             `;
         }
@@ -1389,7 +1480,7 @@ const appState = {
                     <details class="mt-3 text-xs">
                         <summary class="cursor-pointer font-black text-teal-800 dark:text-teal-300">Leer nota · ${evidence.text.length} caracteres</summary>
                         <p class="mt-2 whitespace-pre-wrap rounded-lg evidence-paper border border-slate-200 dark:border-slate-700 p-3 text-slate-800 dark:text-slate-200">${escapeHTML(evidence.text)}</p>
-                        <p class="mt-2 text-[10px] font-bold text-slate-500 dark:text-slate-400">${escapeHTML(evidence.mode === 'team' ? 'Trabajo en equipo' : 'Trabajo individual')} · ${escapeHTML(levelLabels[evidence.level] || 'Autoevaluación pendiente')}${evidence.format ? ` · ${escapeHTML(evidence.format)}` : ''}</p>
+                        <p class="mt-2 text-[10px] font-bold text-slate-500 dark:text-slate-400">${escapeHTML(evidence.mode === 'team' ? 'Trabajo en equipo' : 'Trabajo individual')} · ${escapeHTML(levelLabels[evidence.level] || 'Sin calificar aún')}${evidence.format ? ` · ${escapeHTML(evidence.format)}` : ''}</p>
                     </details>` : '<p class="mt-2 text-[10px] text-slate-500 dark:text-slate-400">Aún no hay una evidencia escrita. Puedes usar un caso ficticio.</p>';
                 return `
                     <article class="py-4 sm:py-5 grid grid-cols-[2.25rem_1fr] sm:grid-cols-[2.25rem_1fr_auto] gap-3 sm:gap-4 items-start">
@@ -1531,7 +1622,7 @@ const appState = {
         function downloadLearningJournal() {
             const levelLabels = { exploring: 'Lo estoy explorando', practicing: 'Lo practico con apoyo', confident: 'Puedo explicarlo' };
             const lines = [
-                '# Bitácora de campo · Mi vida, mi feed',
+                '# Mi diario · Mi vida, mi feed',
                 `Fecha de exportación: ${new Date().toLocaleDateString('es-CO')}`,
                 'Registro local de aprendizaje. No incluye nombre, grado ni diagnóstico.',
                 ''
@@ -1543,7 +1634,7 @@ const appState = {
                 lines.push(`Estado: ${appState.completedStations.includes(stationId) ? 'reto completado' : 'en exploración'}`);
                 if (evidence) {
                     lines.push(`Modalidad: ${evidence.mode === 'team' ? 'equipo' : 'individual'}`);
-                    lines.push(`Autoevaluación: ${levelLabels[evidence.level] || 'sin registrar'}`);
+                    lines.push(`¿Qué tan bien lo hice?: ${levelLabels[evidence.level] || 'sin registrar'}`);
                     if (evidence.format) lines.push(`Formato creativo: ${evidence.format}`);
                     if (evidence.audience) lines.push(`Audiencia: ${evidence.audience}`);
                     lines.push('', evidence.text, '');
@@ -1619,15 +1710,17 @@ const appState = {
                     const b = appState.badges[id];
                     const isEarned = appState.completedStations.includes(parseInt(id));
                     return `
-                        <div class="p-3 rounded-2xl border-2 ${isEarned ? 'border-amber-400 bg-amber-400/25 dark:bg-amber-400/20' : 'border-slate-300 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-800/80 opacity-60'} text-center flex flex-col items-center shadow-md">
-                            <div class="w-12 h-12 rounded-2xl ${b.color} flex flex-col items-center justify-center font-black mb-1.5 shadow-md">
-                                <i class="fa-solid ${b.icon} text-lg"></i>
-                                <i class="fa-solid fa-book-open text-[10px] opacity-90 -mt-0.5"></i>
+                        <div class="min-h-14 p-2 rounded-xl border ${isEarned ? 'border-amber-400 bg-amber-400/25 dark:bg-amber-400/20' : 'border-slate-300 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-800/80 opacity-60'} flex items-center gap-2 shadow-sm">
+                            <div class="w-8 h-8 shrink-0 rounded-lg ${b.color} flex flex-col items-center justify-center font-black shadow-sm">
+                                <i class="fa-solid ${b.icon} text-sm"></i>
+                                <i class="fa-solid fa-book-open text-[7px] opacity-90 -mt-0.5"></i>
                             </div>
-                            <span class="text-xs font-black text-slate-900 dark:text-white leading-tight">${b.title}</span>
-                            <span class="text-[9px] ${isEarned ? 'text-emerald-700 dark:text-emerald-400 font-black' : 'text-slate-500 dark:text-slate-400 font-bold'} mt-1">
+                            <div class="min-w-0">
+                                <span class="block text-[10px] font-black text-slate-900 dark:text-white leading-tight">${b.title}</span>
+                                <span class="block text-[8px] ${isEarned ? 'text-emerald-700 dark:text-emerald-400 font-black' : 'text-slate-500 dark:text-slate-400 font-bold'} mt-0.5">
                                 ${isEarned ? '✓ Demostrado' : 'Pendiente'}
-                            </span>
+                                </span>
+                            </div>
                         </div>
                     `;
                 }).join('');
