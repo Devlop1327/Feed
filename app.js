@@ -46,7 +46,7 @@ if (typeof tailwind !== 'undefined') {
 }
 
 const appState = {
-            studentName: "Alex",
+            studentName: "Jugador",
             studentGrade: "10.º Grado",
             avatarGender: "male",
             hairStyle: "fade",
@@ -812,7 +812,7 @@ const appState = {
                 if (step1) step1.classList.add('hidden');
                 if (step2) step2.classList.remove('hidden');
                 const nameInput = document.getElementById('onboarding-input-name');
-                if (nameInput) nameInput.value = appState.studentName || "Alex";
+                if (nameInput) nameInput.value = appState.studentName === "Jugador" ? "" : appState.studentName;
             }
         }
 
@@ -832,9 +832,9 @@ const appState = {
         function finishOnboardingAndStart() {
             playSfx('success');
             const nameInput = document.getElementById('onboarding-input-name');
-            if (nameInput && nameInput.value.trim() !== "") {
-                appState.studentName = nameInput.value.trim();
-            }
+            appState.studentName = nameInput?.value.trim() || "Jugador";
+            const profileInput = document.getElementById('studio-student-name');
+            if (profileInput) profileInput.value = appState.studentName;
             saveStudentProfile(false);
 
             // Hide onboarding modal
@@ -868,6 +868,8 @@ const appState = {
 
         function openAvatarStudioScreen() {
             playSfx('click');
+            const nameInput = document.getElementById('studio-student-name');
+            if (nameInput) nameInput.value = appState.studentName;
             const modal = document.getElementById('avatar-studio-modal');
             if (modal) {
                 modal.classList.remove('hidden');
@@ -1010,7 +1012,7 @@ const appState = {
         function saveStudentProfile(close = true) {
             const input = document.getElementById('studio-student-name');
             if (input) {
-                appState.studentName = input.value || "Alex";
+                appState.studentName = input.value.trim() || "Jugador";
             }
 
             const hName = document.getElementById('header-student-name');
